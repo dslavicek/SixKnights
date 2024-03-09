@@ -84,30 +84,28 @@ const playerImPath = "./img/knight.png";
 var playerTile = document.querySelector(`#map > div:nth-child(${PlayerY + 1}) > img[col-id="${PlayerX}"]`)
 playerTile.setAttribute('src', playerImPath);
 
-// connect pressing WASD to movement functions
 document.addEventListener("keydown", function(event) {
-if (event.key === "d") {
-    movePlayerRight(PlayerX, PlayerY);
-}
-});
-
-document.addEventListener("keydown", function(event) {
-if (event.key === "a") {
-    movePlayerLeft(PlayerX, PlayerY);
-}
-});
-
-document.addEventListener("keydown", function(event) {
-if (event.key === "w") {
-    movePlayerUp(PlayerX, PlayerY);
-}
-});
-
-document.addEventListener("keydown", function(event) {
-if (event.key === "s") {
-    movePlayerDown(PlayerX, PlayerY);
-}
-});
+    const key = event.key.toLowerCase(); // Convert to lowercase for easier comparison
+  
+    switch (key) {
+      case "d":
+      case "arrowright":
+        movePlayerRight(PlayerX, PlayerY);
+        break;
+      case "a":
+      case "arrowleft":
+        movePlayerLeft(PlayerX, PlayerY);
+        break;
+      case "w":
+      case "arrowup":
+        movePlayerUp(PlayerX, PlayerY);
+        break;
+      case "s":
+      case "arrowdown":
+        movePlayerDown(PlayerX, PlayerY);
+        break;
+    }
+  });
 
 function movePlayerUp() {
 // Check if the move is valid (within map bounds and not a wall tile)
