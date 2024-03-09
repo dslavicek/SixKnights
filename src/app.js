@@ -52,7 +52,7 @@ for(let i = 0; i < mapHeight * mapWidth; i++){
 
 console.log(mapTiles);
 
-const mapDisplay = document.querySelector('#map')
+const mapDisplay = document.querySelector('#map');
 
 function createMap(){
     for(let row = 0; row < mapHeight; row++){
@@ -90,19 +90,23 @@ document.addEventListener("keydown", function(event) {
     switch (key) {
       case "d":
       case "arrowright":
-        movePlayerRight(PlayerX, PlayerY);
+        movePlayerRight();
         break;
       case "a":
       case "arrowleft":
-        movePlayerLeft(PlayerX, PlayerY);
+        movePlayerLeft();
         break;
       case "w":
       case "arrowup":
-        movePlayerUp(PlayerX, PlayerY);
+        movePlayerUp();
         break;
       case "s":
       case "arrowdown":
-        movePlayerDown(PlayerX, PlayerY);
+        movePlayerDown();
+        break;
+      case "e":
+        console.log("E pressed");
+        enterTile();
         break;
     }
   });
@@ -189,3 +193,11 @@ else {
     console.log("Invalid move: cannot move left.");
 }
 }
+
+function enterTile(){
+    const detailedMap = document.querySelector('#detailed-map');
+    const enemy = document.createElement("img");
+    enemy.setAttribute("src", "./img/blue_knight_l.png");
+    detailedMap.appendChild(enemy);
+}
+
